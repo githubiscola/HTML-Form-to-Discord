@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-
 <html>
-    <body>
-        <form method="POST" action="http://localhost:3000/form">
-            <form>
-                <label for="fname">First name:</label><br>
-                <input type="text" id="fname" name="fname"><br>
-                <label for="lname">Last name:</label><br>
-                <input type="text" id="lname" name="lname">
-                <input type="submit">
-              </form>
-        </form>
-    </body>
+  <body>
+    <form id="myForm">
+      <label for="fname">First name:</label><br>
+      <input type="text" id="fname" name="fname"><br>
+      <label for="lname">Last name:</label><br>
+      <input type="text" id="lname" name="lname">
+      <input type="submit" onclick="submitForm(event)">
+    </form>
+
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+      
+        let form = document.getElementById("myForm");
+        let formData = new FormData(form);
+
+        fetch("https://discord.com/api/webhooks/1212397245899477033/uNF77MRRy3kiXYbsPlWwT9Eg3dUdB4rvu5inXh3aIzlXCdEQuKa0M3GHUpTmoUNt6n60", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            content: `First Name: ${formData.get("fname")}\nLast Name: ${formData.get("lname")}`
+          })
+        })
+        .then(response => {
+          if (response.ok) {
+            alert("Form submitted successfully!");
+          } else {
+            alert("Error submitting form.");
+          }
+        })
+        .catch(error => {
+          alert("Error submitting form.");
+        });
+      }
+    </script>
+
+  </body>
 </html>
