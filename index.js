@@ -4,7 +4,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 
 const app = express()
-const webhook = new Discord.WebhookClient("849754785514782730", "C13AhrESdt771HroRPQ2HCM4RU2MgcvNEFW1CqkUu0XCNAkbq-mUBBWYIymG-udqhQKI")
+const webhook = new Discord.WebhookClient("1212397245899477033", "uNF77MRRy3kiXYbsPlWwT9Eg3dUdB4rvu5inXh3aIzlXCdEQuKa0M3GHUpTmoUNt6n60")
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({
